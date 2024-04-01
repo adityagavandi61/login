@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+  <div class="login-container">
+    <form class="login-form" action="/dologin" method="post">
+        {% csrf_token %} 
+      <h2>Login</h2>
+      <div>
+        <style>
+            h5{
+                text-align: center;
+                color: red;
+            }
+        </style>
+        {% if messages %}
+        {% for message in messages %}
+        <h5>{{message}}</h5>
+        {% endfor %}
+        {% endif %}
+    </div>
+      <div class="input-group">
+        <label for="email">Gmail:</label>
+        <input type="text" id="email" name="email" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit">Login</button>
+      <div class="newac">
+      Create a new account <a href="/register">sign up?</a>
+    </div>
+    </form>
+  </div>
+</body>
+</html>
